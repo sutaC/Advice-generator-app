@@ -35,7 +35,7 @@
         --clr-neon-green: hsl(150, 100%, 66%);
 
         /* Neutral */
-        --clr-grayish-blue: hsl(217, 19%, 38%);
+        --clr-grayish-blue: hsl(216, 19%, 38%);
         --clr-dark-grayish-blue: hsl(217, 19%, 24%);
         --clr-dark-blue: hsl(218, 23%, 16%);
     }
@@ -48,7 +48,9 @@
         align-items: center;
         text-align: center;
         
-        min-height: 95vh;
+        box-sizing: border-box;
+        margin: 0;
+        min-height: 100vh;
         
         padding: 0.5rem;
         
@@ -64,6 +66,8 @@
         border-radius: 1rem;
 
         background-color: var(--clr-dark-grayish-blue);
+        box-shadow: 0px 0px 0.15rem var(--clr-grayish-blue);
+
     }
     
     .devider {
@@ -102,6 +106,10 @@
         background-position: center;
 
         transform: translate(0, 1rem);
+    }
+
+    button:active {
+        box-shadow: 0px 0px 1rem var(--clr-neon-green);
     }
     
     
