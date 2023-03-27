@@ -57,6 +57,8 @@
 
     
     main {
+        max-width: 15rem;
+
         padding: 1rem 0.8rem 0rem 0.8rem;
 
         border-radius: 1rem;
@@ -103,7 +105,13 @@
     }
     
     
-    
+    @media (min-width: 400px) {
 
+        .devider {
+            background-image: url('/pattern-divider-desktop.svg');
+        }
+
+    }
+    
 
 </style>
