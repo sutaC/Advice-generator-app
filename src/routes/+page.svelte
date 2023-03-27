@@ -14,7 +14,9 @@
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, architecto.
     </p>
 
-    <div class="devider"></div>
+    <div class="devider">---</div>
+
+    <button>O</button>
 
 </main>
 
