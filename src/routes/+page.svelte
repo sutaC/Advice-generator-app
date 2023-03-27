@@ -2,28 +2,28 @@
 
     import { onMount } from "svelte";
 
-    let quote = null;
+    let advice = null;
 
     
-    const rollQuote = async () => {
+    const rolladvice = async () => {
         
-        quote = null;
+        advice = null;
         
         try {
 
             const response = await fetch('https://api.adviceslip.com/advice');
-            quote = await response.json();
+            advice = await response.json();
 
         } catch (error) {
 
             console.error(error);
-            quote = 'error';
+            advice = 'error';
 
         }
         
     };
     
-    onMount(rollQuote())
+    onMount(rolladvice())
 
 </script>
 <!-- ---  -->
@@ -31,14 +31,13 @@
 
 <main> 
 
-    {#if quote === null}
+    {#if advice === null}
 
         <h1>ADVICE ...</h1>
         
-        <p>Waiting...</p>
-        
+        <p>Waiting...</p>  
     
-    {:else if quote === 'error'}
+    {:else if advice === 'error'}
         
         <h1>ADVICE ...</h1>
             
@@ -46,18 +45,18 @@
 
     {:else}
         
-        <h1>ADVICE #{quote.slip.id}</h1>
+        <h1>ADVICE #{advice.slip.id}</h1>
 
-        <p>"{quote.slip.advice}"</p>
+        <p>"{advice.slip.advice}"</p>
 
     {/if}
 
     <div class="devider"></div>
 
     <button 
-        aria-label="Roll quote"
+        aria-label="Roll advice"
         
-        on:click={() => rollQuote()}
+        on:click={() => rolladvice()}
     ></button>
 
 </main>
