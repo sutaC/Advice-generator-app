@@ -1,6 +1,29 @@
 <script>
 
+    import { onMount } from "svelte";
 
+    let quote = null;
+
+    
+    const rollQuote = async () => {
+        
+        quote = null;
+        
+        try {
+
+            const response = await fetch('https://api.adviceslip.com/advice');
+            quote = await response.json();
+
+        } catch (error) {
+
+            console.error(error);
+            quote = 'error';
+
+        }
+        
+    };
+    
+    onMount(rollQuote())
 
 </script>
 <!-- ---  -->
@@ -8,15 +31,34 @@
 
 <main> 
 
-    <h1>ADVICE #177</h1>
+    {#if quote === null}
 
-    <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, architecto.
-    </p>
+        <h1>ADVICE ...</h1>
+        
+        <p>Waiting...</p>
+        
+    
+    {:else if quote === 'error'}
+        
+        <h1>ADVICE ...</h1>
+            
+        <p>Error occurred!</p>
+
+    {:else}
+        
+        <h1>ADVICE #{quote.slip.id}</h1>
+
+        <p>"{quote.slip.advice}"</p>
+
+    {/if}
 
     <div class="devider"></div>
 
-    <button></button>
+    <button 
+        aria-label="Roll quote"
+        
+        on:click={() => rollQuote()}
+    ></button>
 
 </main>
 
